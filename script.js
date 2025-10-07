@@ -8,22 +8,26 @@ async function fetchNews() {
     console.log(data);
     displayNews(data.articles);
   } catch (error) {
-    console.error('There was an error', error);
+    console.error("There was an error", error);
   }
 }
 
 fetchNews();
 
 function displayNews(articles) {
-  const newsDiv = document.querySelector('#news');
+  const newsDiv = document.querySelector("#news");
   for (const article of articles) {
-    const articleDiv = document.createElement('div');
-    const title = document.createElement('h4');
-    const description = document.createElement('p');
+    const articleDiv = document.createElement("div");
+    const image = document.createElement("img");
+    const title = document.createElement("h4");
+    const description = document.createElement("p");
+    image.classList = "card-img";
+    image.src = article.urlToImage;
     title.textContent = article.title;
-    description.textContent = article.description; 
+    description.textContent = article.description;
+    articleDiv.appendChild(image);
     articleDiv.appendChild(title);
-    articleDiv.appendChild(description); 
+    articleDiv.appendChild(description);
     newsDiv.appendChild(articleDiv);
   }
 }
