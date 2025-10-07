@@ -15,9 +15,17 @@ async function fetchNews() {
 fetchNews();
 
 function displayNews(articles) {
-  const newsDiv = document.querySelector("#news");
+  const newsCard = document.querySelector("#news");
+  const row = document.createElement("div");
+  row.classList.add("row");
+
   for (const article of articles) {
     const articleDiv = document.createElement("div");
+    articleDiv.classList.add("column");
+
+    const cardDiv = document.createElement("div");
+    cardDiv.classList.add("card");
+
     const image = document.createElement("img");
     const title = document.createElement("h4");
     const description = document.createElement("p");
@@ -25,9 +33,12 @@ function displayNews(articles) {
     image.src = article.urlToImage;
     title.textContent = article.title;
     description.textContent = article.description;
-    articleDiv.appendChild(image);
-    articleDiv.appendChild(title);
-    articleDiv.appendChild(description);
-    newsDiv.appendChild(articleDiv);
+    cardDiv.appendChild(image);
+    cardDiv.appendChild(title);
+    cardDiv.appendChild(description);
+    articleDiv.appendChild(cardDiv);
+    row.appendChild(articleDiv);
   }
+
+  newsCard.appendChild(row);
 }
