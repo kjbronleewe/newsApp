@@ -27,15 +27,24 @@ function displayNews(articles) {
     cardDiv.classList.add("card");
 
     const image = document.createElement("img");
-    const title = document.createElement("h4");
-    const description = document.createElement("p");
     image.classList = "card-img";
     image.src = article.urlToImage;
-    title.textContent = article.title;
-    description.textContent = article.description;
     cardDiv.appendChild(image);
+
+    const title = document.createElement("h4");
+    title.textContent = article.title;
     cardDiv.appendChild(title);
+
+    const description = document.createElement("p");
+    description.textContent = article.description;
     cardDiv.appendChild(description);
+
+    const source = document.createElement("a");
+    source.textContent = article.source.name;
+    source.setAttribute("href", article.url);
+    source.setAttribute("target", "_blank");
+    cardDiv.appendChild(source);
+
     articleDiv.appendChild(cardDiv);
     row.appendChild(articleDiv);
   }
